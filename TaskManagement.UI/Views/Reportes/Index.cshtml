@@ -1,0 +1,173 @@
+﻿@{
+    ViewData["Title"] = "Reporte de tareas";
+}
+
+@* Scripts *@
+<script src="~/js/reportes.js"></script>
+
+<div class="container py-4">
+
+    <div class="d-flex flex-column flex-md-row
+                justify-content-between
+                align-items-md-center
+                gap-3 mb-4">
+
+        <div>
+            <h1 class="h3 mb-1">
+                Reporte de tareas
+            </h1>
+
+            <p class="text-muted mb-0">
+                Resumen de tareas pendientes y vencidas por usuario.
+            </p>
+        </div>
+
+        <button type="button"
+                id="btnActualizarReporte"
+                class="btn btn-primary">
+
+            <i class="fas fa-arrows-rotate me-1"></i>
+            Actualizar
+
+        </button>
+
+    </div>
+
+    <!-- Resumen general -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-12 col-md-6">
+
+            <div class="card reporte-card reporte-card-pendientes">
+
+                <div class="card-body">
+
+                    <div class="d-flex align-items-center gap-3">
+
+                        <div class="reporte-icono reporte-icono-pendientes">
+                            <i class="fas fa-clock"></i>
+                        </div>
+
+                        <div>
+                            <span class="reporte-etiqueta">
+                                Total de tareas pendientes
+                            </span>
+
+                            <h2 id="totalPendientes"
+                                class="reporte-total mb-0">
+                                0
+                            </h2>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-12 col-md-6">
+
+            <div class="card reporte-card reporte-card-vencidas">
+
+                <div class="card-body">
+
+                    <div class="d-flex align-items-center gap-3">
+
+                        <div class="reporte-icono reporte-icono-vencidas">
+                            <i class="fas fa-triangle-exclamation"></i>
+                        </div>
+
+                        <div>
+                            <span class="reporte-etiqueta">
+                                Total de tareas vencidas
+                            </span>
+
+                            <h2 id="totalVencidas"
+                                class="reporte-total mb-0">
+                                0
+                            </h2>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Tabla -->
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body">
+
+            <div id="loadingReporte"
+                 class="text-center py-5 d-none">
+
+                <div class="spinner-border"
+                     role="status"
+                     aria-hidden="true">
+                </div>
+
+                <p class="mt-2 mb-0">
+                    Consultando reporte...
+                </p>
+
+            </div>
+
+            <div id="contenedorReporte"
+                 class="table-responsive">
+
+                <table id="tblReportePendientes"
+                       class="table table-hover align-middle">
+
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Usuario
+                            </th>
+
+                            <th scope="col"
+                                class="text-center">
+                                Pendientes
+                            </th>
+
+                            <th scope="col"
+                                class="text-center">
+                                Vencidas
+                            </th>
+
+                            <th scope="col"
+                                class="text-center">
+                                Situación
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div id="sinResultadosReporte"
+                 class="reporte-vacio text-center d-none">
+
+                <i class="fas fa-file-circle-xmark"></i>
+
+                <p class="mb-0 mt-2">
+                    No se encontró información para mostrar.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,208 @@
+﻿@{
+    ViewData["Title"] = "Editar tarea";
+}
+
+<div class="container py-4">
+
+    <input type="hidden"
+           id="IdTarea"
+           value="@ViewBag.IdTarea" />
+
+    <div class="mb-4">
+        <h1 class="h3 mb-1">
+            Editar tarea
+        </h1>
+
+        <p class="text-muted mb-0">
+            Actualiza la información de la tarea seleccionada.
+        </p>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+
+            <form id="formTarea" novalidate>
+
+                <div class="row g-3">
+
+                    <div class="col-12 col-md-8">
+
+                        <label for="txtTitulo"
+                               class="form-label">
+                            Título
+                        </label>
+
+                        <input type="text"
+                               id="txtTitulo"
+                               class="form-control"
+                               maxlength="200"
+                               required />
+
+                        <div class="invalid-feedback">
+                            El título es obligatorio.
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-md-4">
+
+                        <label for="ddlPrioridad"
+                               class="form-label">
+                            Prioridad
+                        </label>
+
+                        <select id="ddlPrioridad"
+                                class="form-select"
+                                required>
+
+                            <option value="">
+                                Selecciona una prioridad
+                            </option>
+
+                        </select>
+
+                        <div class="invalid-feedback">
+                            Selecciona una prioridad.
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+
+                        <label for="txtDescripcion"
+                               class="form-label">
+                            Descripción
+                        </label>
+
+                        <textarea id="txtDescripcion"
+                                  class="form-control"
+                                  rows="4"
+                                  maxlength="500">
+                        </textarea>
+
+                        <div class="form-text">
+                            Máximo 500 caracteres.
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-md-4">
+
+                        <label for="txtFechaInicio"
+                               class="form-label">
+                            Fecha de inicio
+                        </label>
+
+                        <input type="date"
+                               id="txtFechaInicio"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-12 col-md-4">
+
+                        <label for="txtFechaFinalizacion"
+                               class="form-label">
+                            Fecha de finalización
+                        </label>
+
+                        <input type="date"
+                               id="txtFechaFinalizacion"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-12 col-md-4">
+
+                        <label for="txtFechaLimite"
+                               class="form-label">
+                            Fecha límite
+                        </label>
+
+                        <input type="date"
+                               id="txtFechaLimite"
+                               class="form-control"
+                               required />
+
+                        <div class="invalid-feedback">
+                            La fecha límite es obligatoria.
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-md-6">
+
+                        <label for="ddlEstatus"
+                               class="form-label">
+                            Estatus
+                        </label>
+
+                        <select id="ddlEstatus"
+                                class="form-select"
+                                required>
+
+                            <option value="">
+                                Selecciona un estatus
+                            </option>
+
+                        </select>
+
+                        <div class="invalid-feedback">
+                            Selecciona un estatus.
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-md-6">
+
+                        <label for="ddlUsuarioResponsable"
+                               class="form-label">
+                            Usuario responsable
+                        </label>
+
+                        <select id="ddlUsuarioResponsable"
+                                class="form-select"
+                                required>
+
+                            <option value="">
+                                Selecciona un usuario
+                            </option>
+
+                        </select>
+
+                        <div class="invalid-feedback">
+                            Selecciona un responsable.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+
+                    <a asp-controller="Tareas"
+                       asp-action="Index"
+                       class="btn btn-outline-secondary">
+                        Cancelar
+                    </a>
+
+                    <button type="button"
+                            id="btnActualizar"
+                            class="btn btn-primary">
+                        Actualizar
+                    </button>
+
+                </div>
+
+            </form>            
+
+        </div>
+    </div>
+
+</div>
+
+@* @section Scripts {
+    <script src="~/js/Tareas.js"
+            asp-append-version="true">
+    </script>
+} *@

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaskManagement.API.Data\TaskManagement.API.Data.csproj" />
+    <ProjectReference Include="..\TaskManagement.API.Shared\TaskManagement.API.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

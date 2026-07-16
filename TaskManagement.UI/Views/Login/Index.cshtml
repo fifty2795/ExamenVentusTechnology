@@ -1,0 +1,153 @@
+﻿@inject IConfiguration Configuration
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iniciar Sesión</title>
+
+    @* Estilos *@
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />    
+
+    <!-- Notyf -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+
+    <!-- Image Logo -->
+    <link rel="icon" type="image/png" href="~/images/logo.png">
+
+    <link rel="stylesheet" href="~/css/Login.css" />
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script>
+        window.appSettings = {
+            apiUrl: '@Configuration["ApiSettings:BaseUrl"]'
+        };
+    </script>
+</head>
+<body>
+
+    @* Gif Loading *@
+    <div id="loading" style="display:none;">
+        <img src="~/gif/loading.gif" alt="Loading...">
+    </div>
+
+    <!-- Video de fondo -->
+    <video id="bgvid" playsinline autoplay muted loop>
+        <source src="~/video/fondoLogin.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Contenido centrado -->
+    <div class="login-wrapper">
+        <div class="login-container">            
+            <img src="~/images/logo.png" class="login-logo" />
+            <div id="particles-container"></div>
+            <h2 class="login-title">Administrador de Tareas</h2>
+
+            <form>
+
+                @* Email *@                
+
+                <div class="input-group-modern">
+                    <input type="text" id="txtEmail" name="Email" placeholder="Email" required />
+                    <label>Email</label>
+                </div>
+
+                <div class="mb-3">
+
+                    @* Password *@                    
+                    
+                    <div class="input-group-modern password-group">
+                        <input type="password" id="txtPassword" name="Password" placeholder="Password" required />                        
+                        <label>Password</label>                        
+                        <i class="fa-solid fa-eye toggle-password" data-target="txtPassword"></i>
+                    </div>                    
+
+                </div>
+
+                @* Btn Login *@
+
+                <button id="btnLogin" type="button" class="btn btn-primary w-100">Entrar</button>               
+            </form>
+        </div>
+    </div>
+
+    <!-- Mostrar contraseña script -->
+    <script>        
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const logo = document.querySelector(".login-logo");
+
+            // Estado inicial (fuera de pantalla)
+            gsap.set(logo, {
+                y: 500,
+                scale: 0.5,
+                rotation: -180,
+                opacity: 0
+            });
+
+            // Timeline PRO
+            const tl = gsap.timeline();
+
+            tl.to(logo, {
+                y: -30,                // sube fuerte
+                opacity: 1,
+                duration: 0.8,
+                ease: "power4.out"
+            })
+            .to(logo, {
+                y: 0,                  // cae
+                scale: 1.1,
+                rotation: 10,
+                duration: 0.4,
+                ease: "bounce.out"
+            })
+            .to(logo, {
+                y: -15,                // rebote 1
+                rotation: -5,
+                duration: 0.25,
+                ease: "power2.out"
+            })
+            .to(logo, {
+                y: 0,                  // cae
+                duration: 0.25,
+                ease: "bounce.out"
+            })
+            .to(logo, {
+                y: -5,                 // rebote pequeño
+                duration: 0.2,
+                ease: "power1.out"
+            })
+            .to(logo, {
+                y: 0,
+                scale: 1,
+                rotation: 0,
+                duration: 0.2,
+                ease: "elastic.out(1, 0.4)" // efecto final suave
+            });
+        });
+    </script>
+
+    <!-- Notyf -->
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>            
+
+    <script src="~/js/general.js"></script>
+    <script src="~/js/validacion.js"></script>
+    <script src="~/js/login.js"></script>
+    <script src="~/js/api.js"></script>
+</body>
+</html>
